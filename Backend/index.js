@@ -1,5 +1,3 @@
-// server.js
-
 import express from "express";
 import axios from "axios";
 import cors from "cors";
@@ -11,6 +9,7 @@ const AMBEE_API_KEY = process.env.API_KEY;
 app.use(cors());
 
 app.get("/api/pollen", async (req, res) => {
+  // Endpoint to fetch Pollen data
   try {
     const city = req.query.city;
     if (!city) {
@@ -36,6 +35,7 @@ app.get("/api/pollen", async (req, res) => {
 });
 
 app.get("/api/aqi", async (req, res) => {
+  // Endpoint to fetch AQI data
   const city = req.query.city;
   if (!city) {
     return res.status(400).json({ error: "City is required" });
@@ -88,6 +88,7 @@ async function latlong(city) {
 
 app.get("/api/weather", async (req, res) => {
   // Endpoint to fetch weather data
+
   try {
     const city = req.query.city;
 
