@@ -93,7 +93,7 @@ const GetPollen = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/pollen?city=${place}`
+        `https://air-pollen-index.onrender.com/api/pollen?city=${place}`
       );
       setPollenData(response.data);
       setError(null);
@@ -115,7 +115,7 @@ const GetPollen = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/weather?city=${place}`
+        `https://air-pollen-index.onrender.com/api/weather?city=${place}`
       );
       setWeatherData(response.data);
 
@@ -132,7 +132,7 @@ const GetPollen = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/aqi?city=${place}`
+        `https://air-pollen-index.onrender.com/api/aqi?city=${place}`
       );
       setAqiData(response.data);
       setError(null);
