@@ -359,7 +359,7 @@ const GetPollen = () => {
             )}
 
             {!loading && weatherData && (
-              <div className="bg-white pt-4 p-6 border rounded-2xl hover:shadow-md mb-4 transition-all duration-300 max-w mx-auto mt-10">
+              <div className="bg-white pt-4 p-6 border rounded-2xl hover:shadow-md mb-4 transition-all duration-300 max-w mx-auto mt-5">
                 <h2 className="text-2xl font-semibold text-center mb-4 text-gray-900">
                   Weather Information
                 </h2>
