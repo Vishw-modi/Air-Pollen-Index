@@ -269,16 +269,17 @@ const GetPollen = () => {
       return "text-purple-500"; // Extreme
     }
   };
-  const getTemperatureColor = (temp) => {
-    if (temp <= 32) {
+  const getTemperatureColor = (tempinF) => {
+    const temp = ((tempinF - 32) * 5) / 9;
+    if (temp <= 0) {
       return "text-blue-500"; // Freezing
-    } else if (temp <= 52) {
+    } else if (temp <= 10) {
       return "text-cyan-500"; // Cold
-    } else if (temp <= 77) {
+    } else if (temp <= 25) {
       return "text-green-500"; // Pleasant
-    } else if (temp <= 95) {
+    } else if (temp <= 35) {
       return "text-yellow-500"; // Warm
-    } else if (temp <= 113) {
+    } else if (temp <= 45) {
       return "text-orange-500"; // Hot
     } else {
       return "text-red-600"; // Very Hot
@@ -400,7 +401,8 @@ const GetPollen = () => {
                     <span className={`text-lg font-bold ${getTemperatureColor(
                         weatherData.data.temperature
                       )}`}>
-                      {weatherData.data.temperature}°F
+                      {(((weatherData.data.temperature - 32) * 5) / 9).toFixed(1)}
+                      °C
                     </span>
                   </div>
                   <div className="flex flex-col items-center justify-center  bg-slate-100 p-4 rounded-lg  transition-all">
