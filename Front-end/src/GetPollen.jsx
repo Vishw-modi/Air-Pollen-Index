@@ -255,6 +255,35 @@ const GetPollen = () => {
       return "text-pink-500"; // Hazardous
     }
   };
+  
+  const getUVColor = (uv) => {
+    if (uv <= 2) {
+      return "text-green-500"; // Low
+    } else if (uv <= 5) {
+      return "text-yellow-500"; // Moderate
+    } else if (uv <= 7) {
+      return "text-orange-500"; // High
+    } else if (uv <= 10) {
+      return "text-red-500"; // Very High
+    } else {
+      return "text-purple-500"; // Extreme
+    }
+  };
+  const getTemperatureColor = (temp) => {
+    if (temp <= 32) {
+      return "text-blue-500"; // Freezing
+    } else if (temp <= 52) {
+      return "text-cyan-500"; // Cold
+    } else if (temp <= 77) {
+      return "text-green-500"; // Pleasant
+    } else if (temp <= 95) {
+      return "text-yellow-500"; // Warm
+    } else if (temp <= 113) {
+      return "text-orange-500"; // Hot
+    } else {
+      return "text-red-600"; // Very Hot
+    }
+  };
   const getAQIDescription = (aqi) => {
     if (aqi <= 50) {
       return "Air quality is considered satisfactory, and air pollution poses little or no risk.";
@@ -368,7 +397,9 @@ const GetPollen = () => {
                     <span className="block font-medium text-gray-700">
                       Temperature
                     </span>
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className={`text-lg font-bold ${getTemperatureColor(
+                        weatherData.data.temperature
+                      )}`}>
                       {weatherData.data.temperature}°F
                     </span>
                   </div>
@@ -384,7 +415,9 @@ const GetPollen = () => {
                     <span className="block font-medium text-gray-700">
                       UV Index
                     </span>
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className={`text-lg font-bold ${getUVColor(
+                        weatherData.data.uvIndex
+                      )}`}>
                       {weatherData.data.uvIndex}
                     </span>
                   </div>
