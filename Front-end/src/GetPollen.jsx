@@ -337,7 +337,7 @@ const getPollenRiskColor = (pollenCount) => {
     } else if (pollenCount > 300 && pollenCount <= 500) {
       return "text-red-500"; // Very High
     } else {
-      return "text-destructive"; // Extremely High / Error
+      return "text-red-500"; // Extremely High / Error
     }
   };
 
