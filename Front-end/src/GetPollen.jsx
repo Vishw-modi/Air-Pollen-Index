@@ -310,11 +310,11 @@ const GetPollen = () => {
       case "low":
         return "text-green-500";
       default:
-        return "text-muted-foreground";
+        return "text-red-500";
     }
   };
 
-  const getRiskLevelDescription = (risk) => {
+ const getRiskLevelDescription = (risk) => {
     switch (risk.toLowerCase()) {
       case "high":
         return "Consider staying indoors and taking precautions";
@@ -323,7 +323,21 @@ const GetPollen = () => {
       case "low":
         return "Generally safe for outdoor activities";
       default:
-        return "No specific precautions needed";
+        return "Take immediate action and seek medical attention";
+    }
+  };
+  
+const getPollenRiskColor = (pollenCount) => {
+    if (pollenCount >= 0 && pollenCount <= 50) {
+      return "text-green-500"; // Low
+    } else if (pollenCount > 50 && pollenCount <= 150) {
+      return "text-yellow-500"; // Moderate
+    } else if (pollenCount > 150 && pollenCount <= 300) {
+      return "text-orange-500"; // High
+    } else if (pollenCount > 300 && pollenCount <= 500) {
+      return "text-red-500"; // Very High
+    } else {
+      return "text-destructive"; // Extremely High / Error
     }
   };
 
@@ -521,7 +535,7 @@ const GetPollen = () => {
                                 <span className="font-medium capitalize">
                                   {type.replace("_", " ")}
                                 </span>
-                                <span className="text-foreground font-semibold">
+                                <span className={` ${getPollenRiskColor(count)} text-foreground font-semibold`}>
                                   {count}
                                 </span>
                               </div>
